@@ -1,5 +1,5 @@
 #include "../exercise.h"
-
+#include <malloc.h>
 // READ: 复制构造函数 <https://zh.cppreference.com/w/cpp/language/copy_constructor>
 // READ: 函数定义（显式弃置）<https://zh.cppreference.com/w/cpp/language/function>
 
@@ -13,10 +13,10 @@ public:
     DynFibonacci(int capacity): cache(new size_t[capacity]{0, 1}), cached(2) {}
 
     // TODO: 实现复制构造器
-    DynFibonacci(DynFibonacci const & d) {
+    DynFibonacci(DynFibonacci const & d):cache(nullptr), cached(0) {
         auto len = _msize(d.cache) / sizeof(size_t);
         cache = new size_t[len];
-        for (int i = 0; i < len; ++i) cache[i] = d.cache[i];
+        for (auto i = 0; i < len; ++i) cache[i] = d.cache[i];
         cached = d.cached;
     }
 
