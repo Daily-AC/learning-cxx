@@ -55,7 +55,7 @@ int main(int argc, char **argv) {
 
     // ---- 不要修改以上代码 ----
 
-    std::vector<std::string> answers[]{
+    std::vector<const char *> answers[]{
         {"fd"},
         // TODO: 分析 problems[1] 中资源的生命周期，将记录填入 `std::vector`
         {"ffr", "d"},
@@ -67,7 +67,7 @@ int main(int argc, char **argv) {
     for (auto i = 0; i < 3; ++i) {
         ASSERT(problems[i].size() == answers[i].size(), "wrong size");
         for (auto j = 0; j < problems[i].size(); ++j) {
-            ASSERT(problems[i][j] == answers[i][j], "wrong location");
+            ASSERT(std::strcmp(problems[i][j].c_str(), answers[i][j]) == 0, "wrong location");
         }
     }
 
